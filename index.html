@@ -1,1 +1,1039 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Prolivity Cleaning</title>\n    <link rel="stylesheet" href="styles.css">\n</head>\n<body>\n    <header>\n        <h1>Welcome to Prolivity Cleaning</h1>\n    </header>\n    <main>\n        <section>\n            <h2>About Us</h2>\n            <p>Prolivity Cleaning offers top-notch cleaning services for homes and businesses.</p>\n        </section>\n        <section>\n            <h2>Services</h2>\n            <ul>\n                <li>Residential Cleaning</li>\n                <li>Commercial Cleaning</li>\n                <li>Deep Cleaning</li>\n                <li>Move In/Out Cleaning</li>\n            </ul>\n        </section>\n    </main>\n    <footer>\n        <p>&copy; 2026 Prolivity Cleaning</p>\n    </footer>\n    <script src="script.js"></script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProLivity Cleaning | Cleaning with Purpose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111214;
+      --card: #181a1d;
+      --border: #2a2d32;
+      --teal: #2ee8c0;
+      --teal-dim: #1ab89a;
+      --teal-glow: rgba(46,232,192,0.15);
+      --white: #f0f2f4;
+      --grey: #8a9099;
+      --light-grey: #c8cdd4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--teal);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(46,232,192,0.5);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s, height 0.25s;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+    nav.scrolled { padding: 14px 48px; }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--teal);
+      border: none;
+      padding: 10px 22px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    .nav-cta:hover { background: #fff; transform: translateY(-1px); }
+
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 75% 40%, rgba(46,232,192,0.07) 0%, transparent 60%),
+        linear-gradient(160deg, #0f1214 0%, #0a0a0a 60%, #070c0b 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(46,232,192,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46,232,192,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+    }
+    .hero-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 20px;
+      position: relative;
+      display: flex; align-items: center; gap: 12px;
+      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block; width: 32px; height: 1px; background: var(--teal);
+    }
+    .hero-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.5rem, 11vw, 10rem);
+      line-height: 0.92;
+      letter-spacing: 0.03em;
+      position: relative;
+      opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
+    }
+    .hero-headline .accent { color: var(--teal); }
+    .hero-headline .outline {
+      -webkit-text-stroke: 1px rgba(240,242,244,0.3);
+      color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--light-grey);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-top: 28px;
+      opacity: 0; animation: fadeUp 0.9s 0.6s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; align-items: center;
+      margin-top: 40px;
+      opacity: 0; animation: fadeUp 0.9s 0.8s forwards;
+    }
+    .btn-primary {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--teal);
+      border: none;
+      padding: 16px 36px;
+      text-decoration: none;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(46,232,192,0.25);
+    }
+    .btn-ghost {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      border: 1px solid var(--border);
+      padding: 15px 32px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px; right: 48px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
+    }
+    .hero-scroll span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey);
+      writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px; height: 48px; background: linear-gradient(to bottom, var(--teal), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    .hero-badge {
+      position: absolute;
+      top: 110px; right: 48px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 20px 24px;
+      display: flex; flex-direction: column; gap: 4px;
+      opacity: 0; animation: fadeLeft 0.9s 1s forwards;
+    }
+    .hero-badge .badge-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal);
+    }
+    .hero-badge .badge-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: var(--white); line-height: 1;
+    }
+    .hero-badge .badge-sub {
+      font-size: 0.75rem; color: var(--grey); font-weight: 300;
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 48px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px;
+      overflow: hidden;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--grey);
+      white-space: nowrap;
+    }
+    .trust-item svg { color: var(--teal); flex-shrink: 0; }
+    .trust-divider { width: 1px; height: 20px; background: var(--border); }
+
+    /* SECTIONS */
+    section { padding: 100px 48px; }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--teal);
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--teal);
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1; letter-spacing: 0.04em;
+    }
+
+    /* SERVICES */
+    #services { background: var(--dark); }
+    .services-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: end; margin-bottom: 64px;
+    }
+    .services-intro p {
+      font-size: 1rem; font-weight: 300; color: var(--light-grey); line-height: 1.75;
+      align-self: end;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .service-card {
+      background: var(--card);
+      padding: 40px 32px;
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+      border: 1px solid var(--border);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--teal);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: #1e2124; }
+    .service-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #1a2420 0%, var(--card) 100%);
+    }
+    .service-card.featured::before { transform: scaleX(1); }
+    .service-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem; color: rgba(46,232,192,0.08);
+      line-height: 1; margin-bottom: 24px;
+    }
+    .service-icon {
+      width: 44px; height: 44px;
+      border: 1px solid var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      color: var(--teal);
+    }
+    .service-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .service-desc {
+      font-size: 0.9rem; font-weight: 300; color: var(--grey); line-height: 1.7;
+    }
+    .service-features {
+      list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 8px;
+    }
+    .service-features li {
+      font-size: 0.82rem; color: var(--light-grey); font-weight: 300;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .service-features li::before {
+      content: '→'; color: var(--teal); font-size: 0.8rem;
+    }
+    .service-tag {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--black); background: var(--teal);
+      padding: 4px 10px; margin-bottom: 16px;
+    }
+
+    /* WHY US */
+    #why {
+      background: var(--black);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+      padding: 100px 48px;
+    }
+    .why-visual {
+      position: relative; height: 500px;
+    }
+    .why-card-big {
+      position: absolute; inset: 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 36px;
+      overflow: hidden;
+    }
+    .why-card-big::after {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(46,232,192,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .why-big-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem; color: var(--teal); line-height: 1; opacity: 0.15;
+      position: absolute; top: 24px; right: 24px;
+    }
+    .why-card-big h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; letter-spacing: 0.05em; margin-bottom: 8px;
+    }
+    .why-card-big p {
+      font-size: 0.88rem; color: var(--grey); font-weight: 300; line-height: 1.6;
+    }
+    .why-card-sm {
+      position: absolute; top: 20px; right: -24px;
+      background: var(--teal); padding: 24px;
+      width: 160px;
+    }
+    .why-card-sm .sm-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem; color: var(--black); line-height: 1;
+    }
+    .why-card-sm .sm-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--black); opacity: 0.7;
+    }
+    .pillars { display: flex; flex-direction: column; gap: 2px; margin-top: 48px; }
+    .pillar {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 24px;
+      background: var(--card); border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .pillar:hover { border-color: var(--teal); }
+    .pillar-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: var(--teal); opacity: 0.4; line-height: 1; min-width: 32px;
+    }
+    .pillar-content h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+    .pillar-content p {
+      font-size: 0.85rem; font-weight: 300; color: var(--grey); line-height: 1.6;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--dark);
+      position: relative; overflow: hidden;
+    }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-text p {
+      font-size: 1rem; font-weight: 300; color: var(--light-grey); line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .about-text p strong { color: var(--white); font-weight: 500; }
+    .about-tags {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px;
+    }
+    .about-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--teal); border: 1px solid rgba(46,232,192,0.3);
+      padding: 6px 14px;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    }
+    .stat-box {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 36px 28px;
+    }
+    .stat-box .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem; color: var(--teal); line-height: 1;
+    }
+    .stat-box .stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--grey); margin-top: 4px;
+    }
+    .stat-box.dark-stat { background: var(--teal); }
+    .stat-box.dark-stat .stat-num { color: var(--black); }
+    .stat-box.dark-stat .stat-label { color: rgba(10,10,10,0.65); }
+
+    /* SERVICE AREAS */
+    #areas {
+      background: var(--black);
+      text-align: center;
+    }
+    #areas .section-label { justify-content: center; }
+    #areas .section-label::after { display: none; }
+    #areas .section-label::before {
+      content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--teal);
+    }
+    .areas-grid {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 2px; margin-top: 48px;
+    }
+    .area-chip {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey); background: var(--card); border: 1px solid var(--border);
+      padding: 14px 24px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .area-chip:hover { color: var(--teal); border-color: var(--teal); background: var(--teal-glow); }
+    .area-chip.active {
+      color: var(--black); background: var(--teal); border-color: var(--teal);
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--dark);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      padding: 100px 48px;
+    }
+    .contact-info .section-title { margin-bottom: 24px; }
+    .contact-info p {
+      font-size: 1rem; font-weight: 300; color: var(--light-grey); line-height: 1.75;
+      margin-bottom: 40px;
+    }
+    .contact-methods { display: flex; flex-direction: column; gap: 2px; }
+    .contact-method {
+      display: flex; align-items: center; gap: 20px;
+      padding: 20px 24px; background: var(--card); border: 1px solid var(--border);
+    }
+    .method-icon {
+      width: 40px; height: 40px; border: 1px solid var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal); flex-shrink: 0;
+    }
+    .method-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--grey); display: block;
+    }
+    .method-val {
+      font-size: 0.95rem; font-weight: 400; color: var(--white);
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--grey);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--white); font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem; padding: 14px 16px;
+      outline: none; transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--teal); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: var(--card); }
+    .form-submit {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--black); background: var(--teal); border: none;
+      padding: 18px; cursor: pointer;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .form-submit:hover { background: var(--white); transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; letter-spacing: 0.1em; color: var(--white);
+    }
+    .footer-logo span { color: var(--teal); }
+    .footer-copy {
+      font-size: 0.78rem; font-weight: 300; color: var(--grey);
+    }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--grey); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--teal); }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(24px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.4; transform: scaleY(0.7); }
+    }
+
+    /* MOBILE MENU */
+    .mobile-menu {
+      display: none; flex-direction: column;
+      position: fixed; inset: 0; top: 64px;
+      background: var(--black); border-top: 1px solid var(--border);
+      padding: 40px 48px; gap: 24px; z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; letter-spacing: 0.08em; color: var(--white); text-decoration: none;
+    }
+    .mobile-menu a:hover { color: var(--teal); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      #hero { padding: 0 24px 60px; }
+      .hero-badge { display: none; }
+      .services-intro { grid-template-columns: 1fr; gap: 16px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card.featured { grid-column: span 1; }
+      #why { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
+      .why-visual { height: 280px; }
+      .why-card-sm { right: 0; top: 10px; }
+      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      #contact { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      section { padding: 60px 24px; }
+      .trust-bar { gap: 20px; padding: 16px 24px; flex-wrap: wrap; }
+      .trust-divider { display: none; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Pro<span>Livity</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#why" onclick="closeMobile()">Why Us</a>
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#areas" onclick="closeMobile()">Areas</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-badge">
+      <span class="badge-label">Veteran Owned</span>
+      <span class="badge-val">USN</span>
+      <span class="badge-sub">U.S. Navy · Arizona Based</span>
+    </div>
+    <div class="hero-tag">ProLivity Cleaning · Est. Arizona</div>
+    <h1 class="hero-headline">
+      CLEANING<br>
+      WITH <span class="accent">PURPOSE.</span><br>
+      <span class="outline">POWERED BY GRIT.</span>
+    </h1>
+    <p class="hero-sub">Residential deep cleans, move-in / move-out, post-construction — done right the first time, every time.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Clean</a>
+      <a href="#services" class="btn-ghost">See Services</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Veteran-Owned & Operated
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      On-Time Guarantee
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      Insured & Detail-Focused
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Serving Phoenix Metro
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      5-Star Satisfaction
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-intro reveal">
+      <div>
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">OUR<br>SERVICES</h2>
+      </div>
+      <p>From routine home maintenance to heavy post-construction debris removal — ProLivity brings military-grade discipline to every square foot. We start where others stop.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card featured">
+        <span class="service-tag">Most Popular</span>
+        <div class="service-number">01</div>
+        <div class="service-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="service-name">Residential Cleaning</div>
+        <p class="service-desc">Your home deserves a clean that lasts. We handle standard recurring cleans, deep scrubs, and everything in between — top to bottom, no shortcuts.</p>
+        <ul class="service-features">
+          <li>Standard recurring home cleaning</li>
+          <li>Deep clean (kitchens, baths, floors)</li>
+          <li>Move-in / move-out cleaning</li>
+          <li>Appliance & cabinet interior cleaning</li>
+          <li>Window sills, baseboards, ceiling fans</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <div class="service-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="service-name">Post-Construction Cleanup</div>
+        <p class="service-desc">New build or full reno — we clear the dust, debris, and grime so the space is ready to shine before handoff.</p>
+        <ul class="service-features">
+          <li>Debris & dust removal</li>
+          <li>Surface wipe-down & sanitizing</li>
+          <li>Window & frame cleaning</li>
+          <li>Final walkthrough ready</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <div class="service-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <div class="service-name">Commercial Offices</div>
+        <p class="service-desc">Professional environments need professional upkeep. We keep your workspace clean, sanitary, and ready for business.</p>
+        <ul class="service-features">
+          <li>Office & suite cleaning</li>
+          <li>Restroom sanitizing</li>
+          <li>Break room & common areas</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <div class="service-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 22 22 2 22"/></svg>
+        </div>
+        <div class="service-name">Construction Site Prep</div>
+        <p class="service-desc">Pre-build and ongoing site maintenance — keeping active construction zones safe, compliant, and inspection-ready.</p>
+        <ul class="service-features">
+          <li>Site prep & staging cleanup</li>
+          <li>Ongoing site maintenance</li>
+          <li>Final clean before inspection</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="why-left reveal">
+      <div class="section-label">Why ProLivity</div>
+      <h2 class="section-title">DISCIPLINE<br>IN EVERY<br>DETAIL</h2>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div class="pillar-content">
+            <h4>Military Precision</h4>
+            <p>Founded by a U.S. Navy veteran. We operate with the structure, accountability, and attention to detail that military service demands.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div class="pillar-content">
+            <h4>On-Time, Every Time</h4>
+            <p>We show up when we say we will. Your time matters — and we treat it that way without exception.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div class="pillar-content">
+            <h4>Island-Born Hustle</h4>
+            <p>Rooted in Jamaican work ethic and pride — we bring passion and perseverance to every job, big or small.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">04</div>
+          <div class="pillar-content">
+            <h4>You Can Trust Us</h4>
+            <p>Fully insured, background-checked, and committed to earning your trust inside your home or on your worksite.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual reveal">
+      <div class="why-card-big">
+        <div class="why-big-label">100%</div>
+        <h3>Satisfaction Backed by Service</h3>
+        <p>Every clean comes with our commitment: if something isn't right, we make it right — no questions asked.</p>
+      </div>
+      <div class="why-card-sm">
+        <div class="sm-num">5★</div>
+        <div class="sm-label">Client<br>Rated</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-text reveal">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">BUILT ON<br>GRIT</h2>
+        <br>
+        <p>ProLivity Cleaning was born from a simple idea: that <strong>cleaning done right</strong> is one of the most powerful forms of respect — for a space, for the people who live or work in it, and for the craft itself.</p>
+        <p>Founded by a <strong>U.S. Navy veteran</strong> with roots in Jamaica, ProLivity brings together two powerful traditions — military discipline and island-born resilience. We're based right here in <strong>Arizona</strong>, serving our local community with the same standard of excellence we lived by in uniform.</p>
+        <p>We started small on purpose. Because doing it right matters more than doing it fast.</p>
+        <div class="about-tags">
+          <span class="about-tag">Veteran-Owned</span>
+          <span class="about-tag">Arizona Based</span>
+          <span class="about-tag">Jamaican Roots</span>
+          <span class="about-tag">Insured</span>
+          <span class="about-tag">Residential First</span>
+        </div>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Satisfaction Goal</div>
+        </div>
+        <div class="stat-box dark-stat">
+          <div class="stat-num">USN</div>
+          <div class="stat-label">Veteran Founded</div>
+        </div>
+        <div class="stat-box dark-stat">
+          <div class="stat-num">AZ</div>
+          <div class="stat-label">Phoenix Metro</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Service Types</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREAS -->
+  <section id="areas">
+    <div class="reveal">
+      <div class="section-label">Coverage</div>
+      <h2 class="section-title">WHERE WE SERVE</h2>
+      <p style="color: var(--grey); font-weight: 300; margin-top: 12px; font-size: 0.95rem;">Proudly serving the greater Phoenix Metro area and surrounding communities.</p>
+    </div>
+    <div class="areas-grid reveal">
+      <div class="area-chip active">Phoenix</div>
+      <div class="area-chip">Gilbert</div>
+      <div class="area-chip">Mesa</div>
+      <div class="area-chip">Scottsdale</div>
+      <div class="area-chip">Chandler</div>
+      <div class="area-chip">Tempe</div>
+      <div class="area-chip">Glendale</div>
+      <div class="area-chip">Peoria</div>
+      <div class="area-chip">Surprise</div>
+      <div class="area-chip">Goodyear</div>
+      <div class="area-chip">Avondale</div>
+      <div class="area-chip">Queen Creek</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-info reveal">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">LET'S GET<br>YOUR SPACE<br>CLEAN.</h2>
+      <p>Ready to book or just have questions? Reach out — we'll get back to you fast and get you scheduled.</p>
+      <div class="contact-methods">
+        <div class="contact-method">
+          <div class="method-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <span class="method-label">Phone</span>
+            <span class="method-val">(555) 555-5555</span>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="method-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <span class="method-label">Email</span>
+            <span class="method-val">hello@prolivitycleaning.com</span>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="method-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <span class="method-label">Location</span>
+            <span class="method-val">Phoenix Metro, Arizona</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane" />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="jane@email.com" />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(555) 000-0000" />
+      </div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Residential – Standard Clean</option>
+          <option>Residential – Deep Clean</option>
+          <option>Move-In / Move-Out Clean</option>
+          <option>Post-Construction Cleanup</option>
+          <option>Commercial Office Cleaning</option>
+          <option>Construction Site Prep</option>
+          <option>Other / Not Sure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us about your space, preferred dates, or any special requests..."></textarea>
+      </div>
+      <button class="form-submit">Send Request →</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Pro<span>Livity</span> Cleaning</div>
+    <p class="footer-copy">© 2025 ProLivity Cleaning · Phoenix, AZ · Veteran-Owned</p>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    // CURSOR
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animateCursor() {
+      cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+      rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+    document.querySelectorAll('a, button, .service-card, .pillar, .area-chip').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '20px'; cursor.style.height = '20px';
+        ring.style.width = '52px'; ring.style.height = '52px';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '12px'; cursor.style.height = '12px';
+        ring.style.width = '36px'; ring.style.height = '36px';
+      });
+    });
+
+    // NAVBAR SCROLL
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // HAMBURGER
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // SCROLL REVEAL
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // FORM SUBMIT
+    document.querySelector('.form-submit').addEventListener('click', function() {
+      this.textContent = 'Request Sent ✓';
+      setTimeout(() => { this.textContent = 'Send Request →'; }, 3000);
+    });
+  </script>
+</body>
+</html>
