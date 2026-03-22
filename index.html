@@ -114,10 +114,11 @@
     /* HERO */
     #hero {
       min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
       padding: 0 48px 80px;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -145,7 +146,7 @@
       color: var(--teal);
       margin-bottom: 20px;
       position: relative;
-      display: flex; align-items: center; gap: 12px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
       opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
     }
     .hero-tag::before {
@@ -154,12 +155,13 @@
     }
     .hero-headline {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 9vw, 8rem);
+      font-size: clamp(3.6rem, 7vw, 6.8rem);
       line-height: 0.92;
       letter-spacing: 0.03em;
       position: relative;
       color: var(--white);
-      max-width: 8ch;
+      max-width: 14ch;
+      margin: 0 auto;
       opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
     }
     .hero-headline .accent { color: var(--teal); }
@@ -174,10 +176,12 @@
       max-width: 480px;
       line-height: 1.7;
       margin-top: 28px;
+      margin-left: auto;
+      margin-right: auto;
       opacity: 0; animation: fadeUp 0.9s 0.6s forwards;
     }
     .hero-actions {
-      display: flex; gap: 16px; align-items: center;
+      display: flex; gap: 16px; align-items: center; justify-content: center;
       margin-top: 40px;
       opacity: 0; animation: fadeUp 0.9s 0.8s forwards;
     }
@@ -784,8 +788,7 @@
     </div>
     <div class="hero-tag">ProLivity Cleaning · Est. Arizona</div>
       <h1 class="hero-headline">
-        CLEANING<br>
-        WITH <span class="accent">PURPOSE.</span><br>
+        CLEANING WITH <span class="accent">PURPOSE.</span><br>
         <span class="outline">POWERED BY GRIT.</span>
       </h1>
       <p class="hero-sub">Residential deep cleans, move-in / move-out, post-construction — done right the first time, every time.</p>
@@ -1137,10 +1140,4 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // FORM SUBMIT
-    document.querySelector('.form-submit').addEventListener('click', function() {
-      this.textContent = 'Request Sent ✓';
-      setTimeout(() => { this.textContent = 'Send Request →'; }, 3000);
-    });
-</script>
-</body>
-</html>
+    document.querySelector('.form-submit').addEventListener('click', f
