@@ -11,16 +11,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #08141c;
-      --dark: #10202a;
-      --card: #16303c;
-      --border: #274857;
-      --teal: #5dd6ff;
-      --teal-dim: #2fa8cf;
-      --teal-glow: rgba(93,214,255,0.16);
-      --white: #f3f8fb;
-      --grey: #8ea4b1;
-      --light-grey: #d3e1e8;
+      --black: #edf3f5;
+      --dark: #dbe6ea;
+      --card: #f8fbfc;
+      --border: #b7c7cd;
+      --teal: #355e4d;
+      --teal-dim: #4c7564;
+      --teal-glow: rgba(53,94,77,0.12);
+      --white: #102a43;
+      --grey: #5f7380;
+      --light-grey: #385160;
     }
 
     html { scroll-behavior: smooth; }
@@ -49,7 +49,7 @@
     }
     .cursor-ring {
       width: 36px; height: 36px;
-      border: 1.5px solid rgba(93,214,255,0.45);
+      border: 1.5px solid rgba(53,94,77,0.32);
       border-radius: 50%;
       position: fixed;
       top: 0; left: 0;
@@ -65,7 +65,7 @@
       z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 48px;
-      background: rgba(8,20,28,0.85);
+      background: rgba(237,243,245,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       transition: padding 0.3s;
@@ -122,14 +122,17 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 60% 60% at 75% 40%, rgba(93,214,255,0.08) 0%, transparent 60%),
-        linear-gradient(160deg, #122632 0%, #08141c 60%, #061018 100%);
+        linear-gradient(rgba(237,243,245,0.34), rgba(16,42,67,0.48)),
+        url('lotus-design-n-print-g51F6-WYzyU-unsplash.jpg') center/cover no-repeat,
+        radial-gradient(ellipse 60% 60% at 75% 40%, rgba(53,94,77,0.12) 0%, transparent 60%),
+        linear-gradient(160deg, #dfe9ed 0%, #edf3f5 60%, #d4e1e5 100%);
+      filter: saturate(0.88) brightness(1.04);
     }
     .hero-grid {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(93,214,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(93,214,255,0.05) 1px, transparent 1px);
+        linear-gradient(rgba(53,94,77,0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(53,94,77,0.09) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
     }
@@ -159,7 +162,7 @@
     }
     .hero-headline .accent { color: var(--teal); }
     .hero-headline .outline {
-      -webkit-text-stroke: 1px rgba(243,248,251,0.35);
+      -webkit-text-stroke: 1px rgba(16,42,67,0.25);
       color: transparent;
     }
     .hero-sub {
@@ -193,7 +196,7 @@
     .btn-primary:hover {
       background: #ffffff;
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(93,214,255,0.28);
+      box-shadow: 0 10px 30px rgba(53,94,77,0.18);
     }
     .btn-ghost {
       font-family: 'Barlow Condensed', sans-serif;
@@ -302,6 +305,16 @@
       transition: background 0.3s;
       border: 1px solid var(--border);
     }
+    .service-card.has-image {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+    .service-copy {
+      position: relative;
+      z-index: 1;
+    }
     .service-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; height: 2px;
@@ -310,15 +323,30 @@
       transition: transform 0.4s ease;
     }
     .service-card:hover::before { transform: scaleX(1); }
-    .service-card:hover { background: #1b3845; }
+    .service-card:hover { background: #eef5f6; }
     .service-card.featured {
       grid-column: span 2;
-      background: linear-gradient(135deg, #1a3c4b 0%, var(--card) 100%);
+      background: linear-gradient(135deg, #e2edf0 0%, var(--card) 100%);
     }
     .service-card.featured::before { transform: scaleX(1); }
+    .service-media {
+      min-height: 280px;
+      border: 1px solid rgba(16,42,67,0.08);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+    }
+    .service-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(237,243,245,0.02) 0%, rgba(16,42,67,0.12) 100%);
+    }
     .service-number {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 3.5rem; color: rgba(93,214,255,0.1);
+      font-size: 3.5rem; color: rgba(53,94,77,0.12);
       line-height: 1; margin-bottom: 24px;
     }
     .service-icon {
@@ -371,11 +399,23 @@
       padding: 36px;
       overflow: hidden;
     }
+    .why-card-big img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.36;
+    }
+    .why-card-big > * {
+      position: relative;
+      z-index: 1;
+    }
     .why-card-big::after {
       content: '';
       position: absolute; top: -40px; right: -40px;
       width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(93,214,255,0.14) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(53,94,77,0.12) 0%, transparent 60%);
       pointer-events: none;
     }
     .why-big-label {
@@ -433,6 +473,42 @@
     .about-inner {
       display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
     }
+    .about-visual-stack {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      min-height: 460px;
+    }
+    .about-photo {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(237,243,245,0.02) 0%, rgba(16,42,67,0.1) 100%);
+      pointer-events: none;
+    }
+    .about-photo.primary {
+      min-height: 460px;
+      clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+    }
+    .about-photo.secondary {
+      min-height: 220px;
+      clip-path: polygon(24px 0, 100% 0, 100% 100%, 0 100%, 0 24px);
+    }
+    .about-photo.secondary + .about-photo.secondary {
+      margin-top: 16px;
+    }
     .about-text p {
       font-size: 1rem; font-weight: 300; color: var(--light-grey); line-height: 1.85;
       margin-bottom: 20px;
@@ -444,7 +520,7 @@
     .about-tag {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--teal); border: 1px solid rgba(93,214,255,0.32);
+      color: var(--teal); border: 1px solid rgba(53,94,77,0.22);
       padding: 6px 14px;
     }
     .about-stats {
@@ -465,7 +541,7 @@
     }
     .stat-box.dark-stat { background: var(--teal); }
     .stat-box.dark-stat .stat-num { color: var(--black); }
-    .stat-box.dark-stat .stat-label { color: rgba(8,20,28,0.68); }
+    .stat-box.dark-stat .stat-label { color: rgba(16,42,67,0.7); }
 
     /* SERVICE AREAS */
     #areas {
@@ -622,10 +698,14 @@
       .services-intro { grid-template-columns: 1fr; gap: 16px; }
       .services-grid { grid-template-columns: 1fr; }
       .service-card.featured { grid-column: span 1; }
+      .service-card.has-image { grid-template-columns: 1fr; }
+      .service-media { min-height: 220px; }
       #why { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
       .why-visual { height: 280px; }
       .why-card-sm { right: 0; top: 10px; }
       .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-visual-stack { grid-template-columns: 1fr; min-height: auto; }
+      .about-photo.primary, .about-photo.secondary { min-height: 220px; clip-path: none; }
       #contact { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
       .form-row { grid-template-columns: 1fr; }
       section { padding: 60px 24px; }
@@ -729,7 +809,8 @@
       <p>From routine home maintenance to heavy post-construction debris removal — ProLivity brings military-grade discipline to every square foot. We start where others stop.</p>
     </div>
     <div class="services-grid reveal">
-      <div class="service-card featured">
+      <div class="service-card featured has-image">
+        <div class="service-copy">
         <span class="service-tag">Most Popular</span>
         <div class="service-number">01</div>
         <div class="service-icon">
@@ -744,6 +825,8 @@
           <li>Appliance & cabinet interior cleaning</li>
           <li>Window sills, baseboards, ceiling fans</li>
         </ul>
+        </div>
+        <div class="service-media" style="background-image: url('anton-SnKfmC1I9fU-unsplash.jpg');"></div>
       </div>
       <div class="service-card">
         <div class="service-number">02</div>
@@ -826,6 +909,7 @@
     </div>
     <div class="why-visual reveal">
       <div class="why-card-big">
+        <img src="gil-ribeiro-3hO8igCybds-unsplash.jpg" alt="Cleaning professional at work" />
         <div class="why-big-label">100%</div>
         <h3>Satisfaction Backed by Service</h3>
         <p>Every clean comes with our commitment: if something isn't right, we make it right — no questions asked.</p>
@@ -855,22 +939,17 @@
           <span class="about-tag">Residential First</span>
         </div>
       </div>
-      <div class="about-stats reveal">
-        <div class="stat-box">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Satisfaction Goal</div>
+      <div class="about-visual-stack reveal">
+        <div class="about-photo primary">
+          <img src="nino-maghradze-BUXdQh53eis-unsplash.jpg" alt="Bright cleaned interior" />
         </div>
-        <div class="stat-box dark-stat">
-          <div class="stat-num">USN</div>
-          <div class="stat-label">Veteran Founded</div>
-        </div>
-        <div class="stat-box dark-stat">
-          <div class="stat-num">AZ</div>
-          <div class="stat-label">Phoenix Metro</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-num">4+</div>
-          <div class="stat-label">Service Types</div>
+        <div>
+          <div class="about-photo secondary">
+            <img src="lotus-design-n-print-g51F6-WYzyU-unsplash.jpg" alt="Freshly prepared room" />
+          </div>
+          <div class="about-photo secondary">
+            <img src="anton-SnKfmC1I9fU-unsplash.jpg" alt="Detailed residential cleaning" />
+          </div>
         </div>
       </div>
     </div>
