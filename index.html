@@ -11,16 +11,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #f6fafb;
-      --dark: #eaf1f3;
-      --card: #f8fbfc;
-      --border: #c8d5da;
+      --black: #fbfdfe;
+      --dark: #f3f7f8;
+      --card: #ffffff;
+      --border: #d7e1e5;
       --teal: #355e4d;
       --teal-dim: #4c7564;
       --teal-glow: rgba(53,94,77,0.12);
       --white: #102a43;
-      --grey: #5f7380;
-      --light-grey: #385160;
+      --grey: #6c808b;
+      --light-grey: #4b6270;
     }
 
     html { scroll-behavior: smooth; }
@@ -65,7 +65,7 @@
       z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 48px;
-      background: rgba(237,243,245,0.92);
+      background: rgba(251,253,254,0.96);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       transition: padding 0.3s;
@@ -122,27 +122,28 @@
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 720px;
-      padding: 36px 40px;
-      background: rgba(246,250,251,0.74);
+      max-width: 760px;
+      padding: 40px 44px;
+      background: rgba(255,255,255,0.9);
       border: 1px solid rgba(16,42,67,0.08);
-      box-shadow: 0 22px 70px rgba(16,42,67,0.08);
+      border-radius: 24px;
+      box-shadow: 0 26px 80px rgba(16,42,67,0.08);
       backdrop-filter: blur(10px);
     }
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        linear-gradient(rgba(246,250,251,0.58), rgba(246,250,251,0.22)),
+        linear-gradient(rgba(251,253,254,0.72), rgba(251,253,254,0.34)),
         url('lotus-design-n-print-g51F6-WYzyU-unsplash.jpg') center/cover no-repeat,
-        radial-gradient(ellipse 60% 60% at 75% 40%, rgba(53,94,77,0.12) 0%, transparent 60%),
-        linear-gradient(160deg, #eef4f6 0%, #f6fafb 60%, #e4ecef 100%);
-      filter: saturate(0.82) brightness(1.1);
+        radial-gradient(ellipse 60% 60% at 75% 40%, rgba(53,94,77,0.08) 0%, transparent 60%),
+        linear-gradient(160deg, #f6fafb 0%, #fbfdfe 60%, #eef4f6 100%);
+      filter: saturate(0.76) brightness(1.16);
     }
     .hero-grid {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(53,94,77,0.09) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(53,94,77,0.09) 1px, transparent 1px);
+        linear-gradient(rgba(53,94,77,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(53,94,77,0.05) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
     }
@@ -169,13 +170,13 @@
       letter-spacing: 0.03em;
       position: relative;
       color: var(--white);
-      text-shadow: 0 10px 24px rgba(246,250,251,0.32);
+      text-shadow: none;
       opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
     }
     .hero-headline .accent { color: var(--teal); }
     .hero-headline .outline {
       -webkit-text-stroke: 0;
-      color: rgba(16,42,67,0.78);
+      color: rgba(16,42,67,0.9);
     }
     .hero-sub {
       font-size: 1.1rem;
@@ -288,7 +289,7 @@
     #areas > .reveal,
     .areas-grid,
     #contact {
-      max-width: 1180px;
+      max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -305,25 +306,27 @@
     .section-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(2.8rem, 5vw, 4.5rem);
-      line-height: 1; letter-spacing: 0.04em;
+      line-height: 0.96; letter-spacing: 0.04em;
+      max-width: 10ch;
     }
 
     /* SERVICES */
     #services { background: var(--dark); }
     .services-intro {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
-      align-items: end; margin-bottom: 64px;
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 0.95fr); gap: 36px;
+      align-items: start; margin-bottom: 56px;
     }
     .services-intro p {
       font-size: 1rem; font-weight: 300; color: var(--light-grey); line-height: 1.75;
       align-self: end;
     }
     .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
+      align-items: stretch;
     }
     .service-card {
       background: var(--card);
-      padding: 40px 32px;
+      padding: 34px 30px;
       position: relative; overflow: hidden;
       transition: background 0.3s;
       border: 1px solid var(--border);
@@ -331,8 +334,8 @@
     }
     .service-card.has-image {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
-      gap: 28px;
+      grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.88fr);
+      gap: 24px;
       align-items: stretch;
     }
     .service-copy {
@@ -350,11 +353,11 @@
     .service-card:hover { background: #eef5f6; }
     .service-card.featured {
       grid-column: span 2;
-      background: linear-gradient(135deg, #edf4f6 0%, var(--card) 100%);
+      background: linear-gradient(135deg, #f7fbfc 0%, var(--card) 100%);
     }
     .service-card.featured::before { transform: scaleX(1); }
     .service-media {
-      min-height: 280px;
+      min-height: 100%;
       border: 1px solid rgba(16,42,67,0.08);
       background-size: cover;
       background-position: center;
@@ -409,11 +412,11 @@
     /* WHY US */
     #why {
       background: var(--black);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, 0.95fr); gap: 56px; align-items: start;
       padding: 100px 48px;
     }
     .why-visual {
-      position: relative; height: 500px;
+      position: relative; height: 520px;
     }
     .why-card-big {
       position: absolute; inset: 0;
@@ -470,7 +473,7 @@
       font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
       text-transform: uppercase; color: var(--black); opacity: 0.7;
     }
-    .pillars { display: flex; flex-direction: column; gap: 2px; margin-top: 48px; }
+    .pillars { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
     .pillar {
       display: flex; align-items: flex-start; gap: 20px;
       padding: 24px;
@@ -498,14 +501,19 @@
       position: relative; overflow: hidden;
     }
     .about-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, 0.95fr); gap: 56px; align-items: start;
     }
     .about-visual-stack {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       grid-template-rows: repeat(2, minmax(220px, 1fr));
       gap: 16px;
       min-height: 460px;
+    }
+    .about-photo-column {
+      display: grid;
+      grid-template-rows: repeat(2, minmax(220px, 1fr));
+      gap: 16px;
     }
     .about-photo {
       position: relative;
@@ -598,7 +606,7 @@
     /* CONTACT */
     #contact {
       background: var(--dark);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      display: grid; grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr); gap: 56px;
       padding: 100px 48px;
     }
     .contact-info .section-title { margin-bottom: 24px; }
@@ -728,11 +736,12 @@
       .service-card.featured { grid-column: span 1; }
       .service-card.has-image { grid-template-columns: 1fr; }
       .service-media { min-height: 220px; }
-      #why { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
+      #why { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
       .why-visual { height: 280px; }
       .why-card-sm { right: 12px; top: 12px; }
-      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
       .about-visual-stack { grid-template-columns: 1fr; min-height: auto; }
+      .about-photo-column { grid-template-rows: auto; }
       .about-photo.primary, .about-photo.secondary { min-height: 220px; grid-row: auto; }
       #contact { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
       .form-row { grid-template-columns: 1fr; }
@@ -973,7 +982,7 @@
         <div class="about-photo primary">
           <img src="nino-maghradze-BUXdQh53eis-unsplash.jpg" alt="Bright cleaned interior" />
         </div>
-        <div>
+        <div class="about-photo-column">
           <div class="about-photo secondary">
             <img src="lotus-design-n-print-g51F6-WYzyU-unsplash.jpg" alt="Freshly prepared room" />
           </div>
@@ -1143,6 +1152,6 @@
       this.textContent = 'Request Sent ✓';
       setTimeout(() => { this.textContent = 'Send Request →'; }, 3000);
     });
-  </script>
+</script>
 </body>
 </html>
