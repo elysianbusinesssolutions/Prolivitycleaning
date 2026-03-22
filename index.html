@@ -11,10 +11,10 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #edf3f5;
-      --dark: #dbe6ea;
+      --black: #f6fafb;
+      --dark: #eaf1f3;
       --card: #f8fbfc;
-      --border: #b7c7cd;
+      --border: #c8d5da;
       --teal: #355e4d;
       --teal-dim: #4c7564;
       --teal-glow: rgba(53,94,77,0.12);
@@ -119,14 +119,24 @@
       position: relative;
       overflow: hidden;
     }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      padding: 36px 40px;
+      background: rgba(246,250,251,0.74);
+      border: 1px solid rgba(16,42,67,0.08);
+      box-shadow: 0 22px 70px rgba(16,42,67,0.08);
+      backdrop-filter: blur(10px);
+    }
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        linear-gradient(rgba(237,243,245,0.34), rgba(16,42,67,0.48)),
+        linear-gradient(rgba(246,250,251,0.58), rgba(246,250,251,0.22)),
         url('lotus-design-n-print-g51F6-WYzyU-unsplash.jpg') center/cover no-repeat,
         radial-gradient(ellipse 60% 60% at 75% 40%, rgba(53,94,77,0.12) 0%, transparent 60%),
-        linear-gradient(160deg, #dfe9ed 0%, #edf3f5 60%, #d4e1e5 100%);
-      filter: saturate(0.88) brightness(1.04);
+        linear-gradient(160deg, #eef4f6 0%, #f6fafb 60%, #e4ecef 100%);
+      filter: saturate(0.82) brightness(1.1);
     }
     .hero-grid {
       position: absolute; inset: 0;
@@ -158,12 +168,14 @@
       line-height: 0.92;
       letter-spacing: 0.03em;
       position: relative;
+      color: var(--white);
+      text-shadow: 0 10px 24px rgba(246,250,251,0.32);
       opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
     }
     .hero-headline .accent { color: var(--teal); }
     .hero-headline .outline {
-      -webkit-text-stroke: 1px rgba(16,42,67,0.25);
-      color: transparent;
+      -webkit-text-stroke: 0;
+      color: rgba(16,42,67,0.78);
     }
     .hero-sub {
       font-size: 1.1rem;
@@ -269,6 +281,17 @@
 
     /* SECTIONS */
     section { padding: 100px 48px; }
+    .services-intro,
+    .services-grid,
+    #why,
+    .about-inner,
+    #areas > .reveal,
+    .areas-grid,
+    #contact {
+      max-width: 1180px;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .section-label {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em;
@@ -296,7 +319,7 @@
       align-self: end;
     }
     .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
     }
     .service-card {
       background: var(--card);
@@ -304,6 +327,7 @@
       position: relative; overflow: hidden;
       transition: background 0.3s;
       border: 1px solid var(--border);
+      border-radius: 18px;
     }
     .service-card.has-image {
       display: grid;
@@ -326,7 +350,7 @@
     .service-card:hover { background: #eef5f6; }
     .service-card.featured {
       grid-column: span 2;
-      background: linear-gradient(135deg, #e2edf0 0%, var(--card) 100%);
+      background: linear-gradient(135deg, #edf4f6 0%, var(--card) 100%);
     }
     .service-card.featured::before { transform: scaleX(1); }
     .service-media {
@@ -336,7 +360,7 @@
       background-position: center;
       position: relative;
       overflow: hidden;
-      clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+      border-radius: 14px;
     }
     .service-media::after {
       content: '';
@@ -398,6 +422,7 @@
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 36px;
       overflow: hidden;
+      border-radius: 24px;
     }
     .why-card-big img {
       position: absolute;
@@ -431,9 +456,10 @@
       font-size: 0.88rem; color: var(--grey); font-weight: 300; line-height: 1.6;
     }
     .why-card-sm {
-      position: absolute; top: 20px; right: -24px;
+      position: absolute; top: 20px; right: 20px;
       background: var(--teal); padding: 24px;
       width: 160px;
+      border-radius: 18px;
     }
     .why-card-sm .sm-num {
       font-family: 'Bebas Neue', sans-serif;
@@ -450,6 +476,7 @@
       padding: 24px;
       background: var(--card); border: 1px solid var(--border);
       transition: border-color 0.2s;
+      border-radius: 18px;
     }
     .pillar:hover { border-color: var(--teal); }
     .pillar-num {
@@ -475,7 +502,8 @@
     }
     .about-visual-stack {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-rows: repeat(2, minmax(220px, 1fr));
       gap: 16px;
       min-height: 460px;
     }
@@ -484,6 +512,7 @@
       overflow: hidden;
       border: 1px solid var(--border);
       background: var(--card);
+      border-radius: 20px;
     }
     .about-photo img {
       width: 100%;
@@ -500,14 +529,10 @@
     }
     .about-photo.primary {
       min-height: 460px;
-      clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+      grid-row: 1 / span 2;
     }
     .about-photo.secondary {
       min-height: 220px;
-      clip-path: polygon(24px 0, 100% 0, 100% 100%, 0 100%, 0 24px);
-    }
-    .about-photo.secondary + .about-photo.secondary {
-      margin-top: 16px;
     }
     .about-text p {
       font-size: 1rem; font-weight: 300; color: var(--light-grey); line-height: 1.85;
@@ -563,6 +588,7 @@
       color: var(--grey); background: var(--card); border: 1px solid var(--border);
       padding: 14px 24px;
       transition: color 0.2s, border-color 0.2s, background 0.2s;
+      border-radius: 999px;
     }
     .area-chip:hover { color: var(--teal); border-color: var(--teal); background: var(--teal-glow); }
     .area-chip.active {
@@ -584,6 +610,7 @@
     .contact-method {
       display: flex; align-items: center; gap: 20px;
       padding: 20px 24px; background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px;
     }
     .method-icon {
       width: 40px; height: 40px; border: 1px solid var(--teal);
@@ -614,6 +641,7 @@
       font-size: 0.9rem; padding: 14px 16px;
       outline: none; transition: border-color 0.2s;
       appearance: none;
+      border-radius: 14px;
     }
     .form-group input:focus,
     .form-group select:focus,
@@ -702,10 +730,10 @@
       .service-media { min-height: 220px; }
       #why { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
       .why-visual { height: 280px; }
-      .why-card-sm { right: 0; top: 10px; }
+      .why-card-sm { right: 12px; top: 12px; }
       .about-inner { grid-template-columns: 1fr; gap: 48px; }
       .about-visual-stack { grid-template-columns: 1fr; min-height: auto; }
-      .about-photo.primary, .about-photo.secondary { min-height: 220px; clip-path: none; }
+      .about-photo.primary, .about-photo.secondary { min-height: 220px; grid-row: auto; }
       #contact { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
       .form-row { grid-template-columns: 1fr; }
       section { padding: 60px 24px; }
@@ -754,16 +782,18 @@
       <span class="badge-val">USN</span>
       <span class="badge-sub">U.S. Navy · Arizona Based</span>
     </div>
-    <div class="hero-tag">ProLivity Cleaning · Est. Arizona</div>
-    <h1 class="hero-headline">
-      CLEANING<br>
-      WITH <span class="accent">PURPOSE.</span><br>
-      <span class="outline">POWERED BY GRIT.</span>
-    </h1>
-    <p class="hero-sub">Residential deep cleans, move-in / move-out, post-construction — done right the first time, every time.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Book a Clean</a>
-      <a href="#services" class="btn-ghost">See Services</a>
+    <div class="hero-content">
+      <div class="hero-tag">ProLivity Cleaning · Est. Arizona</div>
+      <h1 class="hero-headline">
+        CLEANING<br>
+        WITH <span class="accent">PURPOSE.</span><br>
+        <span class="outline">POWERED BY GRIT.</span>
+      </h1>
+      <p class="hero-sub">Residential deep cleans, move-in / move-out, post-construction — done right the first time, every time.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Book a Clean</a>
+        <a href="#services" class="btn-ghost">See Services</a>
+      </div>
     </div>
     <div class="hero-scroll">
       <div class="scroll-line"></div>
