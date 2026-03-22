@@ -6,7 +6,7 @@
   <title>ProLivity Cleaning | Cleaning with Purpose</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -114,16 +114,16 @@
     /* HERO */
     #hero {
       min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 48px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 88px 48px 80px;
       position: relative;
       overflow: hidden;
     }
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 760px;
-      padding: 40px 44px;
+      max-width: 680px;
+      padding: 34px 38px;
       background: rgba(255,255,255,0.9);
       border: 1px solid rgba(16,42,67,0.08);
       border-radius: 24px;
@@ -164,32 +164,32 @@
       display: block; width: 32px; height: 1px; background: var(--teal);
     }
     .hero-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4.5rem, 11vw, 10rem);
-      line-height: 0.92;
-      letter-spacing: 0.03em;
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.35rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
       position: relative;
       color: var(--white);
       text-shadow: none;
       opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
     }
-    .hero-headline .accent { color: var(--teal); }
+    .hero-headline .accent { color: var(--teal); font-style: italic; }
     .hero-headline .outline {
       -webkit-text-stroke: 0;
       color: rgba(16,42,67,0.9);
     }
     .hero-sub {
-      font-size: 1.1rem;
-      font-weight: 300;
+      font-size: 1.02rem;
+      font-weight: 400;
       color: var(--light-grey);
-      max-width: 480px;
-      line-height: 1.7;
-      margin-top: 28px;
+      max-width: 520px;
+      line-height: 1.75;
+      margin-top: 22px;
       opacity: 0; animation: fadeUp 0.9s 0.6s forwards;
     }
     .hero-actions {
       display: flex; gap: 16px; align-items: center;
-      margin-top: 40px;
+      margin-top: 30px;
       opacity: 0; animation: fadeUp 0.9s 0.8s forwards;
     }
     .btn-primary {
@@ -304,21 +304,34 @@
       content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--teal);
     }
     .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      line-height: 0.96; letter-spacing: 0.04em;
-      max-width: 10ch;
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 4.2vw, 3.9rem);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: #18384b;
+      max-width: 11ch;
     }
 
     /* SERVICES */
     #services { background: var(--dark); }
     .services-intro {
-      display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 0.95fr); gap: 36px;
-      align-items: start; margin-bottom: 56px;
+      display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 44px;
+      align-items: center; margin-bottom: 56px;
     }
     .services-intro p {
-      font-size: 1rem; font-weight: 300; color: var(--light-grey); line-height: 1.75;
-      align-self: end;
+      font-size: 1rem; font-weight: 400; color: var(--light-grey); line-height: 1.8;
+      max-width: 58ch;
+      align-self: center;
+    }
+    .services-heading {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .services-heading .section-title {
+      color: #21485c;
+      max-width: none;
     }
     .services-grid {
       display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
@@ -729,7 +742,8 @@
       nav { padding: 16px 24px; }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
-      #hero { padding: 0 24px 60px; }
+      #hero { padding: 92px 24px 60px; }
+      .hero-content { max-width: none; padding: 28px 24px; }
       .hero-badge { display: none; }
       .services-intro { grid-template-columns: 1fr; gap: 16px; }
       .services-grid { grid-template-columns: 1fr; }
@@ -841,7 +855,7 @@
   <!-- SERVICES -->
   <section id="services">
     <div class="services-intro reveal">
-      <div>
+      <div class="services-heading">
         <div class="section-label">What We Do</div>
         <h2 class="section-title">OUR<br>SERVICES</h2>
       </div>
