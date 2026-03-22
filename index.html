@@ -1140,4 +1140,10 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // FORM SUBMIT
-    document.querySelector('.form-submit').addEventListener('click', f
+    document.querySelector('.form-submit').addEventListener('click', function() {
+      this.textContent = 'Request Sent ✓';
+      setTimeout(() => { this.textContent = 'Send Request →'; }, 3000);
+    });
+</script>
+</body>
+</html>
